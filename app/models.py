@@ -21,6 +21,9 @@ class Entry(db.Model):
         onupdate=datetime.datetime.now
     )
     
+    tags=db.relationship('Tag', secondary=entry_tags,
+        backref=db.backref('entries', lazy='dynamic'))
+    
     def __init__(self, *args, **kwargs):
         super(Entry, self).__init__(*args, **kwargs) # Call parent constructor
         self.generate_slug()
