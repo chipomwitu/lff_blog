@@ -6,3 +6,4 @@ class Configuration(object):
     SQLALCHEMY_DATABASE_URI='sqlite:///{}/blog.db'.format(APPLICATION_DIR)
     # dialect+driver://username:password@host:port/database
     # postgresql://postgres:password@localhost:5432/blog_db
+    SQLALCHEMY_TRACK_MODIFICATIONS=True
