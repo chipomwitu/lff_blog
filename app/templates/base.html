@@ -3,35 +3,38 @@
 <head>
   <meta charset="utf-8">
   <title>{% block title %}{% endblock %}TectonicDodo</title>
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"> -->
+  <link rel="stylesheet" href="/static/bootstrap-3.3.7/css/bootstrap.min.css">
   <style type="text/css">
   body { padding-top: 60px; }
-  </style>
+</style>
 {% block extra_styles %}{% endblock %}
-<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script> -->
+<!-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script> -->
+<script src="/static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+<script src="/static/jquery/jquery.min.js"></script>
 {% block extra_scripts %} {% endblock %}
 </head>
 <body class="{% block body_class %}{% endblock %}">
   <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle"
-      data-toggle="collapse" data-target=".navbar-collapse">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <a class="navbar-brand" href="#">{% block branding %}TectonicDodo{% endblock %}</a>
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle"
+        data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">{% block branding %}TectonicDodo{% endblock %}</a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="/">Home</a></li>
+        {% block extra_nav %}{% endblock %}
+      </ul>
+    </div>
   </div>
-  <div class="collapse navbar-collapse">
-    <ul class="nav navbar-nav">
-      <li><a href="/">Home</a></li>
-      {% block extra_nav %}{% endblock %}
-    </ul>
-  </div>
-</div>
 </div>
 <div class="container">
   <div class="row">
