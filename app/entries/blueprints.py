@@ -5,20 +5,29 @@ from models import Entry, Tag
 
 entries=Blueprint('entries', __name__, template_folder='templates')
 
+# List all the entries
+
 @entries.route('/')
 def index():
     entries=Entry.query.order_by(Entry.created_timestamp.desc())
     return object_list('entries/index.html', entries)
 
+# List all the tags
+
 @entries.route('/tags/')
 def tag_index():
-    pass
+    tags=Tag.query.order_by(Tag.name)
+    return object_list('entries/tag_index.html', tags)
+
+# Display the tag details
 
 @entries.route('/tags/<slug>/')
 def tag_detail(slug):
     tag=Tag.query.filter(Tag.slug==slug).first_or_404()
     entries=tag.entries.order_by(Entry.created_timestamp.desc())
     return object_list('entries/tag_detail.html', entries, tag=tag)
+
+# Display the entries' details
 
 @entries.route('/<slug>/')
 def detail(slug):
