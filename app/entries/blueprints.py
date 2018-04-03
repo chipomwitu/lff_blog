@@ -15,8 +15,10 @@ def tag_index():
     pass
 
 @entries.route('/tags/<slug>/')
-def tag_detail():
-    pass
+def tag_detail(slug):
+    tag=Tag.query.filter(Tag.slug==slug).first_or_404()
+    entries=tag.entries.order_by(Entry.created_timestamp.desc())
+    return object_list('entries/tag_detail.html', entries, tag=tag)
 
 @entries.route('/<slug>/')
 def detail(slug):
